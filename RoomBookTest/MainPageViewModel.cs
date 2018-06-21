@@ -13,6 +13,7 @@ using System.ComponentModel.DataAnnotations;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
 using Windows.UI;
+using System.Threading;
 
 namespace RoomBookTest
 {
@@ -74,14 +75,20 @@ namespace RoomBookTest
         private void ModifyAvilable()
         {
             this.Name = dataSourece.room.name;
-            DispatcherTimer timer = new DispatcherTimer() { Interval = TimeSpan.FromSeconds(10) };
-            timer.Tick += (s, e) =>
+            DispatcherTimer startTimer = new DispatcherTimer() { Interval = TimeSpan.FromSeconds(10) };
+            startTimer.Tick += (s, e) =>
             {
                 this.IsAvailable = true;
-                timer.Stop();
+                DispatcherTimer endTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(10) };
+                endTimer.Tick += (o, p) =>
+                {
+                    this.IsAvailable = false;
+                    endTimer.Stop();
+                };
+                endTimer.Start();
+                startTimer.Stop();
             };
-            timer.Start();
-
+            startTimer.Start();
         }
 
 
