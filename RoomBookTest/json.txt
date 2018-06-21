@@ -1,0 +1,18 @@
+{
+    "id": "a8fdbd0c-c0e4-470d-82b7-2b06a1a58dd8",
+    "code": 4221,
+    "timeFrom": "2018-06-21T15:54:00",
+    "timeTo": "2018-06-14T10:00:00",
+    "note": null,
+    "createdDate": "2018-02-12T15:46:25.483",
+    "room": {
+      "name": "Rum 2",
+      "id": "a8fdbd0c-c0e4-470d-82b7-2b06a1a58dd8",
+      "seats": 5,
+      "availableFrom": null,
+      "availableTo": null,
+      "roomAttributes": [
+
+      ]
+    }
+  }

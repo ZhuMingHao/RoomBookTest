@@ -1,0 +1,29 @@
+﻿<Page
+    x:Class="RoomBookTest.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RoomBookTest"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.DataContext>
+        <local:MainPageViewModel/>
+    </Page.DataContext>
+    <Page.Resources>
+        <local:ColorConverter x:Key="Converter"/>
+    </Page.Resources>
+    <Grid>
+        <GridView ItemsSource="{Binding Items}">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Height="100" Width="100" Background="Red">
+                        <TextBlock Text="{Binding Name}"/>
+                        <Rectangle Height="20" Width="20" Fill="{Binding IsAvailable,Converter={StaticResource Converter}}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+            
+        </GridView>
+    </Grid>
+</Page>
